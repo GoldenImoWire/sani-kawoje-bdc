@@ -1,0 +1,15 @@
+{
+  "name": "al-nasara-bdc",
+  "version": "1.0.0",
+  "description": "Premium Bureau De Change Abuja",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  }
+}

@@ -1,0 +1,8 @@
+[
+  { "currency": "USD", "buy": 1320, "sell": 1335, "flag": "🇺🇸" },
+  { "currency": "GBP", "buy": 1825, "sell": 1850, "flag": "🇬🇧" },
+  { "currency": "EUR", "buy": 1610, "sell": 1635, "flag": "🇪🇺" },
+  { "currency": "AED", "buy": 360, "sell": 390, "flag": "🇦🇪" },
+  { "currency": "SAR", "buy": 65, "sell": 85, "flag": "🇸🇦" },
+  { "currency": "CAD", "buy": 900, "sell": 1000, "flag": "🇨🇦"}
+]
