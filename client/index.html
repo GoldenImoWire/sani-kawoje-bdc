@@ -6,7 +6,19 @@
   <title>SANI-KAWOJE | AL-NASARA NIG LTD | Premium Bureau De Change Abuja</title>
   <meta name="description" content="Abuja's most trusted currency exchange platform with real-time rates, secure transactions, and professional trading tools. Operated by Sani-Kawoje under AL-NASARA NIG LTD.">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js">
+    // Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  document.querySelector('.nav-links').classList.toggle('active');
+});
+
+// Close menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.remove('active');
+  });
+});
+  </script>
   
   <style>
     :root {
@@ -708,25 +720,56 @@
     .toast.show { transform: translateX(0); }
     
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .mobile-menu-btn { display: block; }
-      .hero { min-height: 80vh; }
-      .stats-bar { grid-template-columns: repeat(2, 1fr); margin-top: -20px; }
-      .calc-grid { grid-template-columns: 1fr; }
-      .form-grid { grid-template-columns: 1fr; }
-      .footer-content { grid-template-columns: 1fr; gap: 40px; }
-      .rate-values { grid-template-columns: 1fr; }
-      .chart-container { height: 300px; }
-      section { padding: 60px 5%; }
-    }
-    
-    .skeleton {
-      background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
-      background-size: 200% 100%;
-      animation: loading 1.5s infinite;
-      border-radius: 8px;
-    }
-    
+  .nav-links { 
+    display: none; 
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: var(--dark);
+    flex-direction: column;
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+    z-index: 999;
+    gap: 15px;
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+  
+  .nav-links a {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .mobile-menu-btn { 
+    display: block;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--gold);
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .hero { min-height: 80vh; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); margin-top: -20px; }
+  .calc-grid { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .footer-content { grid-template-columns: 1fr; gap: 40px; }
+  .rate-values { grid-template-columns: 1fr; }
+  .chart-container { height: 300px; }
+  section { padding: 60px 5%; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 8px;
+}
     @keyframes loading {
       0% { background-position: 200% 0; }
       100% { background-position: -200% 0; }
