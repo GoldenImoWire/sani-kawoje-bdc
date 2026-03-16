@@ -7,11 +7,42 @@
   <meta name="description" content="Abuja's most trusted currency exchange platform with real-time rates, secure transactions, and professional trading tools. Operated by Sani-Kawoje under AL-NASARA NIG LTD.">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js">
-    // Mobile menu toggle
-document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-  document.querySelector('.nav-links').classList.toggle('active');
-});
-
+ // Mobile menu toggle - WORKING VERSION
+(function initMobileMenu() {
+  var btn = document.querySelector('.mobile-menu-btn');
+  var nav = document.querySelector('.nav-links');
+  
+  if (!btn || !nav) {
+    setTimeout(initMobileMenu, 100);
+    return;
+  }
+  
+  btn.onclick = function(e) {
+    e.stopPropagation();
+    if (nav.classList.contains('active')) {
+      nav.classList.remove('active');
+      nav.style.display = 'none';
+    } else {
+      nav.classList.add('active');
+      nav.style.display = 'flex';
+    }
+  };
+  
+  var links = nav.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    links[i].onclick = function() {
+      nav.classList.remove('active');
+      nav.style.display = 'none';
+    };
+  }
+  
+  document.onclick = function(e) {
+    if (!btn.contains(e.target) && !nav.contains(e.target)) {
+      nav.classList.remove('active');
+      nav.style.display = 'none';
+    }
+  };
+})();
 // Close menu when clicking a link
 document.querySelectorAll('.nav-links a').forEach(function(link) {
   link.addEventListener('click', function() {
@@ -719,39 +750,44 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
     
     .toast.show { transform: translateX(0); }
     
-    @media (max-width: 768px) {
+   @media (max-width: 768px) {
   .nav-links { 
     display: none; 
     position: absolute;
     top: 70px;
     left: 0;
     right: 0;
-    background: var(--dark);
+    background: rgba(10, 10, 10, 0.98);
     flex-direction: column;
     padding: 20px;
-    border-bottom: 1px solid var(--border);
-    z-index: 999;
+    border-bottom: 1px solid var(--gold);
+    z-index: 9999;
     gap: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   }
   
   .nav-links.active {
-    display: flex;
+    display: flex !important;
   }
   
   .nav-links a {
-    padding: 10px 0;
+    padding: 12px 0;
     border-bottom: 1px solid var(--border);
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
   }
   
   .mobile-menu-btn { 
-    display: block;
+    display: block !important;
     background: none;
-    border: 1px solid var(--border);
+    border: 1px solid var(--gold);
     color: var(--gold);
-    padding: 8px 12px;
+    padding: 8px 15px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 20px;
+    z-index: 10000;
   }
   
   .hero { min-height: 80vh; }
