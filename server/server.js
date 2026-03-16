@@ -236,12 +236,4 @@ function isMarketOpen() {
   return day >= 1 && day <= 6 && hour >= 8 && hour < 19;
 }
 
-// For local development
-if (process.env.NODE_ENV !== 'production') {
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
-  });
-}
-
 module.exports = app;
